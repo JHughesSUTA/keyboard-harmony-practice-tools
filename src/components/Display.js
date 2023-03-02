@@ -1,7 +1,7 @@
 import "../styles/display.css";
 
-const Display = () => {
-  return <div>Display</div>;
+const Display = ({ value, chordOptions }) => {
+  return <div className="display">{chordOptions.toString()}</div>;
 };
 
 export default Display;

@@ -1,7 +1,7 @@
 import "../styles/button.css";
 
-const Button = () => {
-  return <div>Button</div>;
+const Button = ({ buttonValue, onToggle }) => {
+  return <button onClick={onToggle}>{buttonValue}</button>;
 };
 
 export default Button;
