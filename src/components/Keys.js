@@ -1,14 +1,14 @@
 import "../styles/keys.css";
 import Button from "./Button";
 
-const Keys = ({ onToggle, chords }) => {
+const Keys = ({ onToggle, keys }) => {
   return (
     <>
-      {chords.map((chord) => (
+      {keys.map((key) => (
         <Button
-          buttonValue={chord.value}
+          buttonValue={key.value}
           onToggle={onToggle}
-          chordId={chord.id}
+          id={key.id}
         />
       ))}
     </>

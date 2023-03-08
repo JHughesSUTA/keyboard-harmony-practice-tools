@@ -1,10 +1,14 @@
 import "../styles/display.css";
 
-const Display = ({ chordOptions }) => {
+const Display = ({ keyOptions, chordOptions }) => {
   return (
-    <div className="display">
-      {chordOptions.map((option) => option.value + option.selected + " ")}
-    </div>
+    <>
+      <div className="display">
+        {keyOptions.map((option) => option.value + option.selected + " ")}
+        <br></br>
+        {chordOptions.map((option) => option.value + option.selected + " ")}
+      </div>
+    </>
   );
 };
 

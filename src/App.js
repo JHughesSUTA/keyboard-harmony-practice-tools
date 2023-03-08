@@ -4,7 +4,7 @@ import Display from "./components/Display";
 import Keys from "./components/Keys";
 
 function App() {
-  const [chordOptions, setChordOptions] = useState([
+  const [keyOptions, setKeyOptions] = useState([
     {
       id: 1,
       value: "C",
@@ -67,7 +67,48 @@ function App() {
     },
   ]);
 
-  const toggleOption = (id) => {
+  const [chordOptions, setChordOptions] = useState([
+    {
+      id: 1,
+      value: "M7",
+      selected: true,
+    },
+    {
+      id: 2,
+      value: "7",
+      selected: true,
+    },
+    {
+      id: 3,
+      value: "m7",
+      selected: true,
+    },
+    {
+      id: 4,
+      value: "m7(b5)",
+      selected: true,
+    },
+    {
+      id: 5,
+      value: "&deg;7",
+      selected: true,
+    },
+    {
+      id: 6,
+      value: "7alt",
+      selected: true,
+    },
+  ]);
+
+  const toggleSelectedKey = (id) => {
+    setKeyOptions(
+      keyOptions.map((key) =>
+        key.id === id ? { ...key, selected: !key.selected } : key
+      )
+    );
+  };
+
+  const toggleSelectedChord = (id) => {
     setChordOptions(
       chordOptions.map((chord) =>
         chord.id === id ? { ...chord, selected: !chord.selected } : chord
@@ -77,9 +118,9 @@ function App() {
 
   return (
     <div className="container">
-      <Keys onToggle={toggleOption} chords={chordOptions} />
-      <Display value="c" chordOptions={chordOptions} />
-      <Chords />
+      <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
+      <Display value="c" keyOptions={keyOptions} chordOptions={chordOptions} />
+      <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
     </div>
   );
 }

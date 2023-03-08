@@ -1,16 +1,25 @@
 import "../styles/chords.css";
 import Button from "./Button";
 
-const Chords = () => {
+const Chords = ({ onToggle, chords }) => {
   return (
-    <div>
-      <Button buttonValue="M7" />
-      <Button buttonValue="7" />
-      <Button buttonValue="m7" />
-      <Button buttonValue="m7(b5)" />
-      <Button buttonValue="&#8451;7" />
-      <Button buttonValue="7alt." />
-    </div>
+    <>
+      {chords.map((chord) => (
+        <Button
+          buttonValue={chord.value}
+          onToggle={onToggle}
+          id={chord.id}
+        />
+      ))}
+    </>
+    // <div>
+    //   <Button buttonValue="M7" />
+    //   <Button buttonValue="7" />
+    //   <Button buttonValue="m7" />
+    //   <Button buttonValue="m7(b5)" />
+    //   <Button buttonValue="&deg;7" />
+    //   <Button buttonValue="7alt." />
+    // </div>
   );
 };
 
