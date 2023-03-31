@@ -12,14 +12,6 @@ const Chords = ({ onToggle, chords }) => {
         />
       ))}
     </>
-    // <div>
-    //   <Button buttonValue="M7" />
-    //   <Button buttonValue="7" />
-    //   <Button buttonValue="m7" />
-    //   <Button buttonValue="m7(b5)" />
-    //   <Button buttonValue="&deg;7" />
-    //   <Button buttonValue="7alt." />
-    // </div>
   );
 };
 

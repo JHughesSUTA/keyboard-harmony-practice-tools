@@ -2,6 +2,7 @@ import { useState } from "react";
 import Chords from "./components/Chords";
 import Display from "./components/Display";
 import Keys from "./components/Keys";
+import StartButton from "./components/StartButton";
 
 function App() {
   const [keyOptions, setKeyOptions] = useState([
@@ -108,6 +109,8 @@ function App() {
     );
   };
 
+  let tempo = 2000;
+
   const toggleSelectedChord = (id) => {
     setChordOptions(
       chordOptions.map((chord) =>
@@ -116,11 +119,30 @@ function App() {
     );
   };
 
+  const updateKeyDisplay = () => {
+    let key = keyOptions[Math.floor(Math.random() * keyOptions.length)];
+    document.querySelector("#key-display").textContent = key.value;
+  };
+
+  const updateChordDisplay = () => {
+    let chord = chordOptions[Math.floor(Math.random() * chordOptions.length)];
+    document.querySelector("#chord-display").textContent = chord.value;
+  };
+
+  const startRandomizer = () => {
+    setInterval(updateKeyDisplay, tempo);
+    setInterval(updateChordDisplay, tempo);
+  }
+
+
   return (
     <div className="container">
+      <StartButton onToggle={startRandomizer} />
       <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
       <Display value="c" keyOptions={keyOptions} chordOptions={chordOptions} />
       <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
+      <div id="key-display">C</div>
+      <div id="chord-display">7</div>
     </div>
   );
 }
