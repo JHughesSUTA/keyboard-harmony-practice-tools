@@ -1,5 +1,5 @@
-const StartButton = ({ onToggle }) => {
-  return <button onClick={ onToggle }>START</button>;
+const StartButton = ({ onClick }) => {
+  return <button onClick={onClick}>START</button>;
 };
 
 export default StartButton;

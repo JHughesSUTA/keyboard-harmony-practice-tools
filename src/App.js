@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Chords from "./components/Chords";
 import Display from "./components/Display";
 import Keys from "./components/Keys";
@@ -101,6 +101,8 @@ function App() {
     },
   ]);
 
+  const [running, setRunning] = useState(false);
+
   const toggleSelectedKey = (id) => {
     setKeyOptions(
       keyOptions.map((key) =>
@@ -130,19 +132,30 @@ function App() {
   };
 
   const startRandomizer = () => {
-    setInterval(updateKeyDisplay, tempo);
-    setInterval(updateChordDisplay, tempo);
-  }
+    setRunning((runningStatus) => !runningStatus);
+  };
 
+  useEffect(() => {
+    let interval = null;
+    if (running === true) {
+      interval = setInterval(() => {
+        updateKeyDisplay();
+        updateChordDisplay();
+      }, tempo);
+    }
+    return () => clearInterval(interval);
+  }, [running]);
 
   return (
     <div className="container">
-      <StartButton onToggle={startRandomizer} />
+      <StartButton onClick={startRandomizer} />
       <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
       <Display value="c" keyOptions={keyOptions} chordOptions={chordOptions} />
       <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
+      <h2>testing vars</h2>
       <div id="key-display">C</div>
       <div id="chord-display">7</div>
+      <div>{running.toString()}</div>
     </div>
   );
 }
