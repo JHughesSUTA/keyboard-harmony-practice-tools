@@ -19,52 +19,52 @@ function App() {
     {
       id: 3,
       value: "D",
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       value: "A",
-      selected: true,
+      selected: false,
     },
     {
       id: 5,
       value: "E",
-      selected: true,
+      selected: false,
     },
     {
       id: 6,
       value: "B",
-      selected: true,
+      selected: false,
     },
     {
       id: 7,
       value: "F#",
-      selected: true,
+      selected: false,
     },
     {
       id: 8,
       value: "C#",
-      selected: true,
+      selected: false,
     },
     {
       id: 9,
       value: "Bb",
-      selected: true,
+      selected: false,
     },
     {
       id: 10,
       value: "Eb",
-      selected: true,
+      selected: false,
     },
     {
       id: 11,
       value: "Ab",
-      selected: true,
+      selected: false,
     },
     {
       id: 12,
       value: "Db",
-      selected: true,
+      selected: false,
     },
   ]);
 
@@ -82,29 +82,32 @@ function App() {
     {
       id: 3,
       value: "m7",
-      selected: true,
+      selected: false,
     },
     {
       id: 4,
       value: "m7(b5)",
-      selected: true,
+      selected: false,
     },
     {
       id: 5,
       value: "&deg;7",
-      selected: true,
+      selected: false,
     },
     {
       id: 6,
       value: "7alt",
-      selected: true,
+      selected: false,
     },
   ]);
 
+  // TODO : set C and 7 as default values
   const [displayKey, setDisplayKey] = useState("C");
   const [displayChord, setDisplayChord] = useState("7");
 
   const [running, setRunning] = useState(false);
+
+  let tempo = 2000;
 
   const toggleSelectedKey = (id) => {
     setKeyOptions(
@@ -113,8 +116,6 @@ function App() {
       )
     );
   };
-
-  let tempo = 2000;
 
   const toggleSelectedChord = (id) => {
     setChordOptions(
@@ -125,12 +126,16 @@ function App() {
   };
 
   const updateKeyDisplay = () => {
-    let key = keyOptions[Math.floor(Math.random() * keyOptions.length)];
+    let selectedKeys = keyOptions.filter((key) => key.selected);
+    let key = selectedKeys[Math.floor(Math.random() * selectedKeys.length)];
     setDisplayKey(key.value);
   };
 
   const updateChordDisplay = () => {
-    let chord = chordOptions[Math.floor(Math.random() * chordOptions.length)];
+    let selectedChords = chordOptions.filter((chord) => chord.selected);
+
+    let chord =
+      selectedChords[Math.floor(Math.random() * selectedChords.length)];
     setDisplayChord(chord.value);
   };
 
@@ -147,7 +152,7 @@ function App() {
       }, tempo);
     }
     return () => clearInterval(interval);
-  }, [running]);
+  }, [running, keyOptions, chordOptions]);
 
   return (
     <div className="container">
