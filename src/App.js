@@ -101,6 +101,9 @@ function App() {
     },
   ]);
 
+  const [displayKey, setDisplayKey] = useState("C");
+  const [displayChord, setDisplayChord] = useState("7");
+
   const [running, setRunning] = useState(false);
 
   const toggleSelectedKey = (id) => {
@@ -123,12 +126,12 @@ function App() {
 
   const updateKeyDisplay = () => {
     let key = keyOptions[Math.floor(Math.random() * keyOptions.length)];
-    document.querySelector("#key-display").textContent = key.value;
+    setDisplayKey(key.value);
   };
 
   const updateChordDisplay = () => {
     let chord = chordOptions[Math.floor(Math.random() * chordOptions.length)];
-    document.querySelector("#chord-display").textContent = chord.value;
+    setDisplayChord(chord.value);
   };
 
   const startRandomizer = () => {
@@ -150,11 +153,17 @@ function App() {
     <div className="container">
       <StartButton onClick={startRandomizer} />
       <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
-      <Display value="c" keyOptions={keyOptions} chordOptions={chordOptions} />
+      <Display value="C" displayKey={displayKey} displayChord={displayChord} />
       <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
+
       <h2>testing vars</h2>
-      <div id="key-display">C</div>
-      <div id="chord-display">7</div>
+      <div>
+        {keyOptions.map((option) => option.value + option.selected + " ")}
+      </div>
+      <br></br>
+      <div>
+        {chordOptions.map((option) => option.value + option.selected + " ")}
+      </div>
       <div>{running.toString()}</div>
     </div>
   );
