@@ -3,6 +3,7 @@ import Chords from "./components/Chords";
 import Display from "./components/Display";
 import Keys from "./components/Keys";
 import StartButton from "./components/StartButton";
+import TempoSlider from "./components/TempoSlider";
 
 function App() {
   const [keyOptions, setKeyOptions] = useState([
@@ -101,13 +102,13 @@ function App() {
     },
   ]);
 
+  const [tempo, setTempo] = useState(2000);
+
   // TODO : set C and 7 as default values
   const [displayKey, setDisplayKey] = useState("C");
   const [displayChord, setDisplayChord] = useState("7");
 
   const [running, setRunning] = useState(false);
-
-  let tempo = 2000;
 
   const toggleSelectedKey = (id) => {
     setKeyOptions(
@@ -143,6 +144,11 @@ function App() {
     setRunning((runningStatus) => !runningStatus);
   };
 
+  const tempoChange = (event) => {
+    console.log(event.target.value)
+    setTempo(60000 / event.target.value);
+  };
+
   useEffect(() => {
     let interval = null;
     if (running === true) {
@@ -152,10 +158,17 @@ function App() {
       }, tempo);
     }
     return () => clearInterval(interval);
-  }, [running, keyOptions, chordOptions]);
+  }, [running, keyOptions, chordOptions, tempo]);
+
+
+
+
+
+
 
   return (
     <div className="container">
+      <TempoSlider tempo={(60000 / tempo)} handleChange={tempoChange} />
       <StartButton onClick={startRandomizer} />
       <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
       <Display value="C" displayKey={displayKey} displayChord={displayChord} />
