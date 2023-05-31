@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Chords = ({ onToggle, chords }) => {
   return (
-    <div className="chords">
+    <div id="chords">
       {chords.map((chord) => (
         <Button
           buttonValue={chord.value}
