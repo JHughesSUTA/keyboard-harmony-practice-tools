@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Keys = ({ onToggle, keys }) => {
   return (
-    <>
+    <div className="keys">
       {keys.map((key) => (
         <Button
           buttonValue={key.value}
@@ -11,7 +11,7 @@ const Keys = ({ onToggle, keys }) => {
           id={key.id}
         />
       ))}
-    </>
+    </div>
   );
 };
 

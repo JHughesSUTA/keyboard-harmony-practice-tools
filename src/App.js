@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Chords from "./components/Chords";
 import Display from "./components/Display";
 import Keys from "./components/Keys";
-import StartButton from "./components/StartButton";
-import TempoSlider from "./components/TempoSlider";
+import Header from "./components/Header";
+import "./styles/container.css";
 
 function App() {
   const [keyOptions, setKeyOptions] = useState([
@@ -145,7 +145,7 @@ function App() {
   };
 
   const tempoChange = (event) => {
-    console.log(event.target.value)
+    console.log(event.target.value);
     setTempo(60000 / event.target.value);
   };
 
@@ -160,16 +160,10 @@ function App() {
     return () => clearInterval(interval);
   }, [running, keyOptions, chordOptions, tempo]);
 
-
-
-
-
-
-
   return (
     <div className="container">
-      <TempoSlider tempo={(60000 / tempo)} handleChange={tempoChange} />
-      <StartButton onClick={startRandomizer} />
+
+      <Header tempo={60000 / tempo} tempoChange={tempoChange} startRandomizer={startRandomizer} />
       <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
       <Display value="C" displayKey={displayKey} displayChord={displayChord} />
       <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
