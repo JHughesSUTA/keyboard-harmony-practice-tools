@@ -135,8 +135,7 @@ function App() {
   const updateChordDisplay = () => {
     let activeChords = chordOptions.filter((chord) => chord.active);
 
-    let chord =
-      activeChords[Math.floor(Math.random() * activeChords.length)];
+    let chord = activeChords[Math.floor(Math.random() * activeChords.length)];
     setDisplayChord(chord.value);
   };
 
@@ -166,6 +165,7 @@ function App() {
         tempo={60000 / tempo}
         tempoChange={tempoChange}
         startRandomizer={startRandomizer}
+        active={running}
       />
       <Keys onToggle={toggleActiveKey} keys={keyOptions} />
       <Display value="C" displayKey={displayKey} displayChord={displayChord} />

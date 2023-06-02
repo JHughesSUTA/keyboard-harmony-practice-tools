@@ -1,0 +1,12 @@
+#start-button {
+  padding: 15px;
+  background-color: #79e646;
+
+  &.active {
+    background-color: #ea4f4f;
+  }
+
+  svg {
+    font-size: 25px;
+  }
+}
