@@ -39,32 +39,32 @@ function App() {
     },
     {
       id: 7,
-      value: "F#",
+      value: "F\u266F",
       active: false,
     },
     {
       id: 8,
-      value: "C#",
+      value: "C\u266F",
       active: false,
     },
     {
       id: 9,
-      value: "Bb",
+      value: "B\u266d",
       active: false,
     },
     {
       id: 10,
-      value: "Eb",
+      value: "E\u266d",
       active: false,
     },
     {
       id: 11,
-      value: "Ab",
+      value: "A\u266d",
       active: false,
     },
     {
       id: 12,
-      value: "Db",
+      value: "D\u266d",
       active: false,
     },
   ]);
@@ -87,12 +87,12 @@ function App() {
     },
     {
       id: 4,
-      value: "m7(b5)",
+      value: "m7(\u266d5)",
       active: false,
     },
     {
       id: 5,
-      value: "&deg;7",
+      value: "\u00B07",
       active: false,
     },
     {
