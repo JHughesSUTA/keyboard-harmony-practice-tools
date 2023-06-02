@@ -7,7 +7,7 @@ const Display = ({ displayKey, displayChord }) => {
         <div className="display__circle">
           <p>
             {displayKey}
-            {/* {keyOptions.map((option) => option.value + option.selected + " ")} */}
+            {/* {keyOptions.map((option) => option.value + option.active + " ")} */}
             {displayChord}
           </p>
         </div>

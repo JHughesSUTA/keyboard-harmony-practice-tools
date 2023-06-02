@@ -9,6 +9,7 @@ const Chords = ({ onToggle, chords }) => {
           buttonValue={chord.value}
           onToggle={onToggle}
           id={chord.id}
+          active={chord.active}
         />
       ))}
     </div>

@@ -10,62 +10,62 @@ function App() {
     {
       id: 1,
       value: "C",
-      selected: true,
+      active: true,
     },
     {
       id: 2,
       value: "G",
-      selected: true,
+      active: true,
     },
     {
       id: 3,
       value: "D",
-      selected: false,
+      active: false,
     },
     {
       id: 4,
       value: "A",
-      selected: false,
+      active: false,
     },
     {
       id: 5,
       value: "E",
-      selected: false,
+      active: false,
     },
     {
       id: 6,
       value: "B",
-      selected: false,
+      active: false,
     },
     {
       id: 7,
       value: "F#",
-      selected: false,
+      active: false,
     },
     {
       id: 8,
       value: "C#",
-      selected: false,
+      active: false,
     },
     {
       id: 9,
       value: "Bb",
-      selected: false,
+      active: false,
     },
     {
       id: 10,
       value: "Eb",
-      selected: false,
+      active: false,
     },
     {
       id: 11,
       value: "Ab",
-      selected: false,
+      active: false,
     },
     {
       id: 12,
       value: "Db",
-      selected: false,
+      active: false,
     },
   ]);
 
@@ -73,32 +73,32 @@ function App() {
     {
       id: 1,
       value: "M7",
-      selected: true,
+      active: true,
     },
     {
       id: 2,
       value: "7",
-      selected: true,
+      active: true,
     },
     {
       id: 3,
       value: "m7",
-      selected: false,
+      active: false,
     },
     {
       id: 4,
       value: "m7(b5)",
-      selected: false,
+      active: false,
     },
     {
       id: 5,
       value: "&deg;7",
-      selected: false,
+      active: false,
     },
     {
       id: 6,
       value: "7alt",
-      selected: false,
+      active: false,
     },
   ]);
 
@@ -110,33 +110,33 @@ function App() {
 
   const [running, setRunning] = useState(false);
 
-  const toggleSelectedKey = (id) => {
+  const toggleActiveKey = (id) => {
     setKeyOptions(
       keyOptions.map((key) =>
-        key.id === id ? { ...key, selected: !key.selected } : key
+        key.id === id ? { ...key, active: !key.active } : key
       )
     );
   };
 
-  const toggleSelectedChord = (id) => {
+  const toggleActiveChord = (id) => {
     setChordOptions(
       chordOptions.map((chord) =>
-        chord.id === id ? { ...chord, selected: !chord.selected } : chord
+        chord.id === id ? { ...chord, active: !chord.active } : chord
       )
     );
   };
 
   const updateKeyDisplay = () => {
-    let selectedKeys = keyOptions.filter((key) => key.selected);
-    let key = selectedKeys[Math.floor(Math.random() * selectedKeys.length)];
+    let activeKeys = keyOptions.filter((key) => key.active);
+    let key = activeKeys[Math.floor(Math.random() * activeKeys.length)];
     setDisplayKey(key.value);
   };
 
   const updateChordDisplay = () => {
-    let selectedChords = chordOptions.filter((chord) => chord.selected);
+    let activeChords = chordOptions.filter((chord) => chord.active);
 
     let chord =
-      selectedChords[Math.floor(Math.random() * selectedChords.length)];
+      activeChords[Math.floor(Math.random() * activeChords.length)];
     setDisplayChord(chord.value);
   };
 
@@ -162,21 +162,24 @@ function App() {
 
   return (
     <div className="container">
-
-      <Header tempo={60000 / tempo} tempoChange={tempoChange} startRandomizer={startRandomizer} />
-      <Keys onToggle={toggleSelectedKey} keys={keyOptions} />
+      <Header
+        tempo={60000 / tempo}
+        tempoChange={tempoChange}
+        startRandomizer={startRandomizer}
+      />
+      <Keys onToggle={toggleActiveKey} keys={keyOptions} />
       <Display value="C" displayKey={displayKey} displayChord={displayChord} />
-      <Chords onToggle={toggleSelectedChord} chords={chordOptions} />
+      <Chords onToggle={toggleActiveChord} chords={chordOptions} />
 
-      <h2>testing vars</h2>
+      {/* <h2>testing vars</h2>
       <div>
-        {keyOptions.map((option) => option.value + option.selected + " ")}
+        {keyOptions.map((option) => option.value + option.active + " ")}
       </div>
       <br></br>
       <div>
-        {chordOptions.map((option) => option.value + option.selected + " ")}
+        {chordOptions.map((option) => option.value + option.active + " ")}
       </div>
-      <div>{running.toString()}</div>
+      <div>{running.toString()}</div> */}
     </div>
   );
 }

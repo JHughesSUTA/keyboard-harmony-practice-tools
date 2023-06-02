@@ -9,6 +9,7 @@ const Keys = ({ onToggle, keys }) => {
           buttonValue={key.value}
           onToggle={onToggle}
           id={key.id}
+          active={key.active}
         />
       ))}
     </div>
