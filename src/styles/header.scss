@@ -1,5 +1,10 @@
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 30px 0;
+  padding: 30px 10px;
+  background-color: #6463636b;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  color: white;
 }

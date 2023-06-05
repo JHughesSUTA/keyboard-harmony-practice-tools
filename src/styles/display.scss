@@ -5,15 +5,19 @@
   .display__circle {
     display: inline-block;
     margin: 10px auto;
-    border: 2px solid black;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     width: 100%;
     // max-width: 400px;
     position: relative;
+    background-color: #6463636b;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white;
 
     p {
-      font-size: 60px;
+      font-size: 90px;
+      font-weight: 700;
       position: absolute;
       top: 50%;
       left: 50%;

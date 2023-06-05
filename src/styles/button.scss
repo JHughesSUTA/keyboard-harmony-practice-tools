@@ -1,6 +1,13 @@
+@use "variables";
+
 .button {
   height: 40px;
+  color: white;
+  font-weight: 600;
+  border: none;
+  background-color: #1d1d20;
+  border-radius: 10px;
   &.active {
-    background-color: lightblue;
+    background-color: rgb(8, 41, 233);
   }
 }

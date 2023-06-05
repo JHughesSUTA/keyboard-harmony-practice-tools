@@ -1,9 +1,12 @@
 #start-button {
   padding: 15px;
-  background-color: #79e646;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(8, 41, 233);
+  color: white;
 
   &.active {
-    background-color: #ea4f4f;
+    background-color: black;
   }
 
   svg {
