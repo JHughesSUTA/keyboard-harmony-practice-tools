@@ -1,1 +1,1 @@
-#chords{display:grid;gap:5px;grid-template-columns:repeat(6, 1fr);padding:10px;background-color:rgba(100,99,99,.4196078431);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:20px}
+#chords{display:grid;gap:5px;grid-template-columns:repeat(6, 1fr);padding:10px;background-color:rgba(100,99,99,.4196078431);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:20px;flex-grow:1}

@@ -1,14 +1,16 @@
 #display {
   text-align: center;
-  margin: 10px auto;
+  margin: 20px auto;
   width: 100%;
+  flex-grow: 8;
+  display: flex;
   .display__circle {
     display: inline-block;
-    margin: 10px auto;
+    margin: auto;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     width: 100%;
-    // max-width: 400px;
+    max-width: 950px;
     position: relative;
     background-color: #6463636b;
     backdrop-filter: blur(20px);
